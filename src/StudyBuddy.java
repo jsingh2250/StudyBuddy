@@ -7,7 +7,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 public class StudyBuddy extends Application {
@@ -19,6 +25,8 @@ public class StudyBuddy extends Application {
     private Button nextCardButton = new Button("Next Card");
     private Button previousCardButton = new Button("Previous Card");
 
+    Font labelFont = Font.font("Veranda", FontWeight.SEMI_BOLD, 18);
+    Font buttonFont = Font.font("Veranda", FontWeight.BOLD, 11);
     // Instantiate the deck of flash cards.
     Deck deck = new Deck();
 
@@ -27,15 +35,16 @@ public class StudyBuddy extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        // // TODO: Remove this test code.
-        // for (int i = 0; i < 10; i++) {
-        //     deck.add(new FlashCard("Term: " + Integer.toString(i), "Definition: " + Integer.toString(i)));
-        // }
-        // showFlashCardTerm(deck.get(deckIndex));
+        // TODO: Remove this test code.
+        for (int i = 0; i < 10; i++) {
+            deck.add(new FlashCard("Term: " + Integer.toString(i), "Definition: " + Integer.toString(i)));
+        }
+        showFlashCardTerm(deck.get(deckIndex));
 
         // Create the main user interface.
-        int horizontalAndVerticalGapInPixels = 27;
+        int horizontalAndVerticalGapInPixels = 26;
         GridPane mainGridPane = new GridPane();
+        mainGridPane.setBackground(new Background(new BackgroundFill(Color.rgb(40, 40, 42), new CornerRadii(0), new Insets(3))));
         mainGridPane.setPadding(new Insets(horizontalAndVerticalGapInPixels));
         mainGridPane.setHgap(horizontalAndVerticalGapInPixels);
         mainGridPane.setVgap(horizontalAndVerticalGapInPixels);
@@ -45,10 +54,14 @@ public class StudyBuddy extends Application {
         termAndDefinitionGridPane.setHgap(horizontalAndVerticalGapInPixels);
         termAndDefinitionGridPane.setVgap(horizontalAndVerticalGapInPixels);
         Label termLabel = new Label("Term:");
+        termLabel.setFont(labelFont);
+        termLabel.setTextFill(Color.WHITESMOKE);
         GridPane.setHalignment(termLabel, HPos.RIGHT);
         termAndDefinitionGridPane.add(termLabel, 0, 0);
         termAndDefinitionGridPane.add(termTextField, 1, 0);
         Label definitionLabel = new Label("Definition:");
+        definitionLabel.setFont(labelFont);
+        definitionLabel.setTextFill(Color.WHITESMOKE);
         GridPane.setHalignment(definitionLabel, HPos.RIGHT);
         termAndDefinitionGridPane.add(definitionLabel, 0, 1);
         termAndDefinitionGridPane.add(definitionTextArea, 1, 1);
@@ -58,18 +71,35 @@ public class StudyBuddy extends Application {
         GridPane buttonGridPane = new GridPane();
         buttonGridPane.setHgap(horizontalAndVerticalGapInPixels);
         buttonGridPane.setVgap(horizontalAndVerticalGapInPixels);
-        int buttonWidthInPixels = 100;
-        addNewCardButton.setPrefWidth(buttonWidthInPixels);
-        shuffleCardsButton.setPrefWidth(buttonWidthInPixels);
-        showDefinitionButton.setPrefWidth(buttonWidthInPixels);
-        nextCardButton.setPrefWidth(buttonWidthInPixels);
-        previousCardButton.setPrefWidth(buttonWidthInPixels);
         buttonGridPane.add(addNewCardButton, 0, 0);
         buttonGridPane.add(shuffleCardsButton, 0, 1);
         buttonGridPane.add(showDefinitionButton, 0, 2);
         buttonGridPane.add(nextCardButton, 0, 3);
         buttonGridPane.add(previousCardButton, 0, 4);
         mainGridPane.add(buttonGridPane, 1, 0);
+
+        // Setting formatting for buttons.
+        int buttonWidth = 120;
+        addNewCardButton.setStyle( "-fx-background-color: whitesmoke; -fx-border-color: whitesmoke; -fx-border-radius: 2;" );
+        addNewCardButton.setFont(buttonFont);
+        addNewCardButton.setPrefWidth(buttonWidth);
+
+        shuffleCardsButton.setStyle( "-fx-background-color: whitesmoke; -fx-border-color: whitesmoke; -fx-border-radius: 2;" );
+        shuffleCardsButton.setFont(buttonFont);
+        shuffleCardsButton.setPrefWidth(buttonWidth);
+
+        showDefinitionButton.setStyle( "-fx-background-color: whitesmoke; -fx-border-color: whitesmoke; -fx-border-radius: 2;" );
+        showDefinitionButton.setFont(buttonFont);
+        showDefinitionButton.setPrefWidth(buttonWidth);
+
+        nextCardButton.setStyle( "-fx-background-color: whitesmoke; -fx-border-color: whitesmoke; -fx-border-radius: 2;" );
+        nextCardButton.setFont(buttonFont);
+        nextCardButton.setPrefWidth(buttonWidth);
+
+        previousCardButton.setStyle( "-fx-background-color: whitesmoke; -fx-border-color: whitesmoke; -fx-border-radius: 2;" );
+        previousCardButton.setFont(buttonFont);
+        previousCardButton.setPrefWidth(buttonWidth);
+
         // Set the properties of the user interface.
         mainGridPane.setAlignment(Pos.CENTER);
         termTextField.setEditable(false);
@@ -116,6 +146,7 @@ public class StudyBuddy extends Application {
         // Create a scene and place it in the stage.
         Scene scene = new Scene(mainGridPane);
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.setTitle("Study Buddy");
         stage.show();
     }
