@@ -35,16 +35,17 @@ public class StudyBuddy extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        // TODO: Remove this test code.
-        for (int i = 0; i < 10; i++) {
-            deck.add(new FlashCard("Term: " + Integer.toString(i), "Definition: " + Integer.toString(i)));
-        }
-        showFlashCardTerm(deck.get(deckIndex));
+        // // TODO: Remove this test code.
+        // for (int i = 0; i < 10; i++) {
+        //     deck.add(new FlashCard("Term: " + Integer.toString(i), "Definition: " + Integer.toString(i)));
+        // }
+        // showFlashCardTerm(deck.get(deckIndex));
 
         // Create the main user interface.
         int horizontalAndVerticalGapInPixels = 26;
         GridPane mainGridPane = new GridPane();
-        mainGridPane.setBackground(new Background(new BackgroundFill(Color.rgb(40, 40, 42), new CornerRadii(0), new Insets(3))));
+        mainGridPane.setBackground(
+                new Background(new BackgroundFill(Color.rgb(40, 40, 42), new CornerRadii(0), new Insets(3))));
         mainGridPane.setPadding(new Insets(horizontalAndVerticalGapInPixels));
         mainGridPane.setHgap(horizontalAndVerticalGapInPixels);
         mainGridPane.setVgap(horizontalAndVerticalGapInPixels);
@@ -80,33 +81,42 @@ public class StudyBuddy extends Application {
 
         // Setting formatting for buttons.
         int buttonWidth = 120;
-        addNewCardButton.setStyle( "-fx-background-color: whitesmoke; -fx-border-color: whitesmoke; -fx-border-radius: 2;" );
+        addNewCardButton
+                .setStyle("-fx-background-color: whitesmoke; -fx-border-color: whitesmoke; -fx-border-radius: 2;");
         addNewCardButton.setFont(buttonFont);
         addNewCardButton.setPrefWidth(buttonWidth);
 
-        shuffleCardsButton.setStyle( "-fx-background-color: whitesmoke; -fx-border-color: whitesmoke; -fx-border-radius: 2;" );
+        shuffleCardsButton
+                .setStyle("-fx-background-color: whitesmoke; -fx-border-color: whitesmoke; -fx-border-radius: 2;");
         shuffleCardsButton.setFont(buttonFont);
         shuffleCardsButton.setPrefWidth(buttonWidth);
 
-        showDefinitionButton.setStyle( "-fx-background-color: whitesmoke; -fx-border-color: whitesmoke; -fx-border-radius: 2;" );
+        showDefinitionButton
+                .setStyle("-fx-background-color: whitesmoke; -fx-border-color: whitesmoke; -fx-border-radius: 2;");
         showDefinitionButton.setFont(buttonFont);
         showDefinitionButton.setPrefWidth(buttonWidth);
 
-        nextCardButton.setStyle( "-fx-background-color: whitesmoke; -fx-border-color: whitesmoke; -fx-border-radius: 2;" );
+        nextCardButton
+                .setStyle("-fx-background-color: whitesmoke; -fx-border-color: whitesmoke; -fx-border-radius: 2;");
         nextCardButton.setFont(buttonFont);
         nextCardButton.setPrefWidth(buttonWidth);
 
-        previousCardButton.setStyle( "-fx-background-color: whitesmoke; -fx-border-color: whitesmoke; -fx-border-radius: 2;" );
+        previousCardButton
+                .setStyle("-fx-background-color: whitesmoke; -fx-border-color: whitesmoke; -fx-border-radius: 2;");
         previousCardButton.setFont(buttonFont);
         previousCardButton.setPrefWidth(buttonWidth);
 
         // Set the properties of the user interface.
         mainGridPane.setAlignment(Pos.CENTER);
-        termTextField.setEditable(false);
-        definitionTextArea.setEditable(false);
 
         // Process events.
-        addNewCardButton.setOnAction(e -> System.out.println("addNewCardButton"));
+        addNewCardButton.setOnAction(e -> {
+            if (termTextField.getText().equals("") || definitionTextArea.getText().equals("")) {
+                return;
+            }
+            // deck.add(new FlashCard(termTextField.getText(), definitionTextArea.getText()));
+            deck.add(deckIndex, new FlashCard(termTextField.getText(), definitionTextArea.getText()));
+        });
         shuffleCardsButton.setOnAction(e -> {
             clearTextFieldAndTextArea();
             if (deck.isEmpty()) {
