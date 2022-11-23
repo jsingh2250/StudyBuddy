@@ -117,8 +117,9 @@ public class StudyBuddy extends Application {
                 return;
             }
             for (int i = 0; i < deck.size(); i++) {
-                if (deck.get(i).getTerm().equals(termToAdd)); {
+                if (deck.get(i).getTerm().equals(termToAdd)) {
                     deck.set(i, new FlashCard(termToAdd, definitionToAdd));
+                    return;
                 }
             }
             deck.add(deckIndex, new FlashCard(termToAdd, definitionToAdd));
