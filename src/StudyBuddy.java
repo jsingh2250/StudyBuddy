@@ -35,7 +35,7 @@ public class StudyBuddy extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        // // TODO: Remove this test code.
+        // // Test code.
         // for (int i = 0; i < 10; i++) {
         //     deck.add(new FlashCard("Term: " + Integer.toString(i), "Definition: " + Integer.toString(i)));
         // }
