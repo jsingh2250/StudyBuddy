@@ -65,6 +65,7 @@ public class StudyBuddy extends Application {
         definitionLabel.setTextFill(Color.WHITESMOKE);
         GridPane.setHalignment(definitionLabel, HPos.RIGHT);
         termAndDefinitionGridPane.add(definitionLabel, 0, 1);
+        definitionTextArea.setWrapText(true);
         termAndDefinitionGridPane.add(definitionTextArea, 1, 1);
         mainGridPane.add(termAndDefinitionGridPane, 0, 0);
 
