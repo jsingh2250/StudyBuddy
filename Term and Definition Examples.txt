@@ -1,0 +1,8 @@
+Algorithm
+An algorithm is a set of instructions or rules designed to solve a definite problem.
+
+Program
+A computer program is termed as an organized collection of instructions, which when executed perform a specific task or function.
+
+API
+Application Programming Interface (API) is a set of rules, routines, and protocols to build software applications.

@@ -1,5 +1,5 @@
-Project Name: StudyBuddy powered by Java
-Team Name: StudyBuddy
+Project Name: Study Buddy
+Team Name: Study Buddy
 Team Members: Jaskaran Singh & Brendan Spranger
 
 Project Description: This program is a virtual flash card application that can help students study course material. This application was built to help students study key terms and their definitions. This application can be useful for students who want to achieve higher scores in their courses.
