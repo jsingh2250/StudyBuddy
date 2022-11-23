@@ -111,11 +111,17 @@ public class StudyBuddy extends Application {
 
         // Process events.
         addNewCardButton.setOnAction(e -> {
-            if (termTextField.getText().equals("") || definitionTextArea.getText().equals("")) {
+            String termToAdd = termTextField.getText();
+            String definitionToAdd = definitionTextArea.getText();
+            if (termToAdd.equals("") || definitionToAdd.equals("")) {
                 return;
             }
-            // deck.add(new FlashCard(termTextField.getText(), definitionTextArea.getText()));
-            deck.add(deckIndex, new FlashCard(termTextField.getText(), definitionTextArea.getText()));
+            for (int i = 0; i < deck.size(); i++) {
+                if (deck.get(i).getTerm().equals(termToAdd)); {
+                    deck.set(i, new FlashCard(termToAdd, definitionToAdd));
+                }
+            }
+            deck.add(deckIndex, new FlashCard(termToAdd, definitionToAdd));
         });
         shuffleCardsButton.setOnAction(e -> {
             clearTextFieldAndTextArea();
